@@ -16,7 +16,7 @@ h2 {
 }
 
 .btn-add {
-    border-radius: 50%;
+    text-align: center;
     margin: 8px 400px;
 }
 
@@ -25,7 +25,7 @@ h2 {
 }
 
 #myForm {
-    margin-left: 10%;
+    margin-left: 11%;
     width: 400px;
 }
 
