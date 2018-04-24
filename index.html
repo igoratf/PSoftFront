@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<title>Title of the document</title>
+</head>
+
+<body>
+<h2>Mural de PSoft</h2>
+<div class="container">
+    <div id="mural"></div>
+    <button type="button" class="btn btn-outline-success btn-lg btn-add" onclick="showForm()">+</button>
+    
+</div>
+
+<div class="msg-container" id="myForm">
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Adicione uma mensagem</label>
+            <textarea class="form-control" id="msgTextArea" rows="3"></textarea>
+            <button type="button" class="btn btn-primary btn-submit" onclick="onSubmit()">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<script src="client.js"></script>
+</body>
+
+</html>
