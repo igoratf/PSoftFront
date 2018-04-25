@@ -8,20 +8,30 @@
 
 <body>
 <h2>Mural de PSoft</h2>
-<div class="container">
+
+<div class="mural-container">
     <div id="mural"></div>
     <button type="button" class="btn btn-outline-success btn-lg btn-add rounded-circle" onclick="showForm()">+</button>
     
 </div>
 
-<div class="msg-container" id="myForm">
+
+<div id="myForm">
     <form>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Adicione uma mensagem</label>
-            <textarea class="form-control" id="msgTextArea" rows="3"></textarea>
-            <button type="button" class="btn btn-primary btn-submit" onclick="onSubmit()">Enviar</button>
-        </div>
-    </form>
+  <div class="form-row">
+    <div class="col">
+      <input type="text" class="form-control" id="title" placeholder="Título">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" id="mensagem" placeholder="Mensagem">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" id="author" placeholder="Autor">
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary btn-submit" onclick="onSubmit()">Enviar</button>
+</form>
+
 </div>
 
 <script src="client.js"></script>

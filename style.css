@@ -1,5 +1,4 @@
 .container {
-    margin: 8px;
     width: 400px;
 }
 
@@ -7,11 +6,23 @@ h2 {
     margin: 54px;
 }
 
+.mural-container {
+    margin-left: 150px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.msg-container {
+    margin-left: 100px;
+}
+
 .msg {
     border: 2px solid;
     font-size: 18px;
     width: 300px;
-    margin: 5px;
+    margin: 8px;
     padding: 2px;
 }
 
@@ -26,7 +37,6 @@ h2 {
 
 #myForm {
     margin-left: 11%;
-    width: 400px;
 }
 
 #msg {
