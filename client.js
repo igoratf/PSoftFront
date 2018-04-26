@@ -12,13 +12,16 @@ console.log(items);
 }
 
 function showForm() {
+    var btnForm = document.getElementById("btnForm");
     var myForm = document.getElementById('myForm');
      console.log(formVisibility);
     formVisibility = !formVisibility;
     if (formVisibility === true) {
         myForm.style.visibility = '';
+        btnForm.textContent = "+";
     } else {
         myForm.style.visibility = 'hidden';
+        btnForm.textContent = "-";
     }
     console.log(myForm.style.visibility);
 }
