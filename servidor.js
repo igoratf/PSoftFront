@@ -1,9 +1,9 @@
-// const express = require('express');
-// const app = express();
+const express = require('express');
+const app = express();
 
-// app.use('/', express.static(__dirname));
+app.use('/', express.static(__dirname));
 
 
-// app.listen(3000, function() {
-//     console.log('Servidor iniciado');
-// })
+app.listen(3000, function() {
+    console.log('Servidor iniciado');
+})

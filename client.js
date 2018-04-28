@@ -6,7 +6,17 @@ var formVisibility = true;
 
 
 function update() {
-    var items = this.mensagens.map(e => `<li id="msg">${e.title}, ${e.msg}, ${e.author}</li>`).join("\n");
+    var items = this.mensagens.map(e => `<div class="row msg-container">
+    <div class="col-md-6 msg-card">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><strong>${e.title}</strong></h5>
+                <p class="card-text">${e.msg}</p> 
+                <small>${e.author}</small>
+            </div>
+        </div>
+    </div>
+    </div>`).join("\n");
 console.log(items);
     this.mural.innerHTML = `<ul>` + items;
 }
@@ -18,10 +28,10 @@ function showForm() {
     formVisibility = !formVisibility;
     if (formVisibility === true) {
         myForm.style.visibility = '';
-        btnForm.textContent = "+";
+        btnForm.textContent = "Esconder campos de nova mensagem";
     } else {
         myForm.style.visibility = 'hidden';
-        btnForm.textContent = "-";
+        btnForm.textContent = "Enviar nova mensagem";
     }
     console.log(myForm.style.visibility);
 }

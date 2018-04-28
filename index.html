@@ -11,26 +11,28 @@
 
 <div class="mural-container">
     <div id="mural"></div>
-    <button id="btnForm" type="button" class="btn btn-outline-success btn-lg btn-add rounded-circle" onclick="showForm()">+</button>
+    <button id="btnForm" type="button" class="btn btn-outline-success btn-lg btn-add" onclick="showForm()">Esconder campos de nova mensagem </button>
     
 </div>
 
 
 <div id="myForm">
-    <form>
-  <div class="form-row">
-    <div class="col">
-      <input type="text" class="form-control" id="title" placeholder="Título">
+  <form>
+    <div class="form-group col-md-6">
+      <label for="formGroupExampleInput">Título</label>
+      <input id="title" type="text" class="form-control" placeholder="Insira um título">
     </div>
-    <div class="col">
-      <input type="text" class="form-control" id="mensagem" placeholder="Mensagem">
+    <div class="form-group col-md-6">
+      <label for="formGroupExampleInput2">Mensagem</label>
+      <input id="msg" type="text" class="form-control"  placeholder="Insira sua mensagem">
     </div>
-    <div class="col">
-      <input type="text" class="form-control" id="author" placeholder="Autor">
+    <div class="form-group col-md-6">
+      <label for="formGroupExampleInput2">Autor</label>
+      <input id="author" type="text" class="form-control" placeholder="Insira nome do autor">
     </div>
-  </div>
-  <button type="button" class="btn btn-primary btn-submit" onclick="onSubmit()">Enviar</button>
-</form>
+    <button type="button" class="btn btn-primary btn-submit" onclick="onSubmit()">Enviar</button>
+  </form>
+  
 
 </div>
 

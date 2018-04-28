@@ -7,7 +7,7 @@ h2 {
 }
 
 .mural-container {
-    margin-left: 150px;
+    margin-left: 12px;
 }
 
 ul {
@@ -28,7 +28,7 @@ ul {
 
 .btn-add {
     text-align: center;
-    margin: 8px 400px;
+    margin-left: 35%;
 }
 
 .btn-submit {
@@ -36,14 +36,19 @@ ul {
 }
 
 #myForm {
-    margin-left: 11%;
+    margin-top: 10px;
+    margin-left: 28%;
 }
 
-#msg {
-    border: 2px solid;
-    font-size: 18px;
-    width: 400px;
-    margin: 5px;
-    padding: 2px;
+.msg-card {
+    margin-left: 20%;
+    margin-top: 5px;
+    text-align: center;
+    position: relative;
 }
+
+.card-body {
+    border: 2px solid;
+}
+
 
