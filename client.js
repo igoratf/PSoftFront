@@ -1,13 +1,15 @@
+
+
 var wall = document.getElementById("wall");
 var formVisibility = true;
 var wallVisibility = false;
+var optsVisibility = false;
 var mensagens = [];
 
+getMessages();
 
-
-
-function update() {
-    var items = this.mensagens.map(e => `<div class="row align-items-center">
+function update(msgList) {
+    let items = msgList.map(e => `<div class="row align-items-center">
     <div class="col"></div>
     <div class="col-6 msg-card">
         <div class="card">
@@ -23,18 +25,6 @@ function update() {
     this.wall.innerHTML = items;
 }
 
-function showForm() {
-    var btnForm = document.getElementById("btnForm");
-    var myForm = document.getElementById('myForm');
-    formVisibility = !formVisibility;
-    if (formVisibility === true) {
-        myForm.style.visibility = '';
-        btnForm.textContent = "Esconder campos de nova mensagem";
-    } else {
-        myForm.style.visibility = 'hidden';
-        btnForm.textContent = "Enviar nova mensagem";
-    }
-}
 
 function onSubmit() {
     var titulo = document.getElementById("title");
@@ -55,7 +45,7 @@ mensagens.push({
     msg: mensagem.value,
     author: autor.value
 })
-update();   
+update(mensagens);   
 resetForm(titulo, mensagem, autor);
 }
 
@@ -65,6 +55,18 @@ function resetForm(titulo, mensagem, autor) {
     autor.value = '';
 }
 
+function showForm() {
+    let btnForm = document.getElementById("btnForm");
+    let msgForm = document.getElementById('msgForm');
+    formVisibility = !formVisibility;
+    if (formVisibility === true) {
+        msgForm.style.display = 'block';
+        btnForm.textContent = "Esconder campos de nova mensagem";
+    } else {
+        msgForm.style.display = 'none';
+        btnForm.textContent = "Enviar nova mensagem";
+    }
+}
 
 function showMessages() {
     let btnShow = document.getElementById("btnShowMsgs");
@@ -80,12 +82,46 @@ function showMessages() {
 
 }
 
+function showOptions() {
+    let btnOpts = document.getElementById("btnOpts");
+    let options = document.getElementById("optsForm");
+    optsVisibility = !optsVisibility;
 
-fetch('http://150.165.85.16:9900/api/msgs')
-.then(res => res.json())
-.then(res => {
-    this.mensagens = res;
-    update();
-});
+    if (optsVisibility === true) {
+        options.style.display = 'block';
+        btnOpts.textContent = "Esconder opções";
+    } else {
+        options.style.display = 'none';
+        btnOpts.textContent = "Outras opções";
+    }
+
+}
+
+function filterUpdate(param) {
+
+    let filtered = this.mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.author.indexOf(param) != -1 || e.frontend.indexOf(param) != -1);
+    if (filtered.length != 0) {
+        update(filtered);
+    }
+     
+}
+
+let filterParam = document.getElementById("filter");
+    filterParam.addEventListener("keydown", function(){
+        filterUpdate(filterParam.value);
+    });
+
+
+
+function getMessages() {
+    fetch('http://150.165.85.16:9900/api/msgs')
+    .then(res => res.json())
+    .then(res => {
+        this.mensagens = res;
+        update(this.mensagens);
+    });
+}
+
+
 
 

@@ -12,7 +12,7 @@
   </div>
 
 <div class="arrange-vert">
-  <button id="btnShowMsgs" type="button" class="btn btn-outline-success btn-lg btn-show" onclick="showMessages()">Exibir mensagens</button>
+  <button id="btnShowMsgs" type="button" class="btn btn-outline-success btn-lg btn-opts btn-show" onclick="showMessages()">Exibir mensagens</button>
 </div>
 
 
@@ -24,12 +24,10 @@
 
 
 <div class="arrange-vert">
-  <button id="btnForm" type="button" class="btn btn-outline-success btn-lg btn-add" onclick="showForm()">Esconder campos de nova mensagem</button>
+  <button id="btnForm" type="button" class="btn btn-outline-success btn-lg btn-opts" onclick="showForm()">Esconder campos de nova mensagem</button>
 </div>
 
-
-
-<div id="myForm">
+<div id="msgForm">
   <div class="form-container">
   <form>
     <div class="form-group col-md-12">
@@ -47,8 +45,24 @@
     <button type="button" class="btn btn-success btn-submit" onclick="onSubmit()">Enviar</button>
   </form>
   </div>  
-
 </div>
+
+
+<div class="arrange-vert">
+  <button id="btnOpts" type="button" class="btn btn-outline-warning btn-lg btn-opts" onclick="showOptions()">Outras opções</button>
+</div>
+
+<div id="optsForm">
+  <div class="form-container">
+    <form>
+      <div class="form-group col-md-12">
+        <label for="filter">Filtro</label>
+        <input id="filter" type="text" class="form-control" placeholder="Filtrar mensagens">
+      </div>
+    </form>
+  </div>
+</div>
+
 
 <div class="footer">
   &copy;Produzido por Igor

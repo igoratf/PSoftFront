@@ -28,7 +28,7 @@ h2 {
     padding: 2px;
 }
 
-.btn-add {
+.btn-opts {
     width: 400px;
     margin-top: 15px;
     text-align: center;
@@ -39,6 +39,7 @@ h2 {
 
 .btn-show {
     width: 400px;
+    margin-top: 0px;
     text-align: center;
     position: relative;
     left: 50%;
@@ -91,5 +92,9 @@ h2 {
     display: none;
     margin: 5px auto;
     position: relative;
+}
+
+#optsForm {
+    display: none;
 }
 
