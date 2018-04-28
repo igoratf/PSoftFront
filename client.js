@@ -1,4 +1,4 @@
-var mural = document.getElementById("wall-container");
+var wall = document.getElementById("wall");
 var formVisibility = true;
 var wallVisibility = false;
 var mensagens = [];
@@ -7,8 +7,9 @@ var mensagens = [];
 
 
 function update() {
-    var items = this.mensagens.map(e => `<div class="row msg-container">
-    <div class="col-md-6 msg-card">
+    var items = this.mensagens.map(e => `<div class="row align-items-center">
+    <div class="col"></div>
+    <div class="col-6 msg-card">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title"><strong>${e.title}</strong></h5>
@@ -17,14 +18,14 @@ function update() {
             </div>
         </div>
     </div>
+    <div class="col"></div>
     </div>`).join("\n");
-    this.mural.innerHTML = `<ul>` + items;
+    this.wall.innerHTML = items;
 }
 
 function showForm() {
     var btnForm = document.getElementById("btnForm");
     var myForm = document.getElementById('myForm');
-     console.log(formVisibility);
     formVisibility = !formVisibility;
     if (formVisibility === true) {
         myForm.style.visibility = '';
@@ -33,7 +34,6 @@ function showForm() {
         myForm.style.visibility = 'hidden';
         btnForm.textContent = "Enviar nova mensagem";
     }
-    console.log(myForm.style.visibility);
 }
 
 function onSubmit() {
@@ -67,7 +67,6 @@ function resetForm(titulo, mensagem, autor) {
 
 
 function showMessages() {
-    let wall = document.getElementById("wall-container");
     let btnShow = document.getElementById("btnShowMsgs");
     wallVisibility = !wallVisibility;
 
@@ -87,7 +86,6 @@ fetch('http://150.165.85.16:9900/api/msgs')
 .then(res => {
     this.mensagens = res;
     update();
-    console.log(res);
 });
 
 
