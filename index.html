@@ -3,36 +3,41 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<title>Title of the document</title>
+<title>Frontend Projeto de Software - Igor</title>
 </head>
 
 <body>
-<h2>Mural de PSoft</h2>
+  <div class="jumbotron header">
+    <h2>Mural Projeto de Software</h2>
+  </div>
 
-<div class="mural-container">
+  <button id="btnShowMsgs" type="button" class="btn btn-outline-success btn-lg btn-show" onclick="showMessages()">Exibir mensagens</button>
+
+<div id="wall-container" class="mural-container">
     <div id="mural"></div>
-    <button id="btnForm" type="button" class="btn btn-outline-success btn-lg btn-add" onclick="showForm()">Esconder campos de nova mensagem </button>
-    
 </div>
+<button id="btnForm" type="button" class="btn btn-outline-success btn-lg btn-add" onclick="showForm()">Esconder campos de nova mensagem</button>
 
 
 <div id="myForm">
+  <div class="form-container">
+
   <form>
-    <div class="form-group col-md-6">
-      <label for="formGroupExampleInput">Título</label>
+    <div class="form-group col-md-12">
+      <label for="title">Título</label>
       <input id="title" type="text" class="form-control" placeholder="Insira um título">
     </div>
-    <div class="form-group col-md-6">
-      <label for="formGroupExampleInput2">Mensagem</label>
+    <div class="form-group col-md-12">
+      <label for="message">Mensagem</label>
       <input id="mensagem" type="text" class="form-control"  placeholder="Insira sua mensagem">
     </div>
-    <div class="form-group col-md-6">
-      <label for="formGroupExampleInput2">Autor</label>
+    <div class="form-group col-md-12">
+      <label for="author">Autor</label>
       <input id="author" type="text" class="form-control" placeholder="Insira nome do autor">
     </div>
-    <button type="button" class="btn btn-primary btn-submit" onclick="onSubmit()">Enviar</button>
+    <button type="button" class="btn btn-success btn-submit" onclick="onSubmit()">Enviar</button>
   </form>
-  
+  </div>  
 
 </div>
 

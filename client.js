@@ -1,8 +1,9 @@
-var mural = document.getElementById("mural");
-
+var mural = document.getElementById("wall-container");
+var formVisibility = true;
+var wallVisibility = false;
 var mensagens = [];
 
-var formVisibility = true;
+
 
 
 function update() {
@@ -17,7 +18,6 @@ function update() {
         </div>
     </div>
     </div>`).join("\n");
-console.log(items);
     this.mural.innerHTML = `<ul>` + items;
 }
 
@@ -66,11 +66,28 @@ function resetForm(titulo, mensagem, autor) {
 }
 
 
+function showMessages() {
+    let wall = document.getElementById("wall-container");
+    let btnShow = document.getElementById("btnShowMsgs");
+    wallVisibility = !wallVisibility;
+
+    if (wallVisibility === true) {
+        wall.style.display = 'block';
+        btnShow.textContent = 'Esconder mensagens';
+    } else {
+        wall.style.display = 'none';
+        btnShow.textContent = 'Exibir mensagens';
+    }
+
+}
+
+
 fetch('http://150.165.85.16:9900/api/msgs')
 .then(res => res.json())
 .then(res => {
     this.mensagens = res;
     update();
+    console.log(res);
 });
 
 
