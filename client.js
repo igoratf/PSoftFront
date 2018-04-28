@@ -1,10 +1,10 @@
 
-
 var wall = document.getElementById("wall");
 var formVisibility = true;
 var wallVisibility = false;
 var optsVisibility = false;
 var mensagens = [];
+
 
 getMessages();
 
@@ -16,7 +16,8 @@ function update(msgList) {
             <div class="card-body">
                 <h5 class="card-title"><strong>${e.title}</strong></h5>
                 <p class="card-text">${e.msg}</p> 
-                <small>${e.author}</small>
+                <small>${e.author}</small><br>
+                <small>ID: ${e.frontend}</small>
             </div>
         </div>
     </div>
@@ -97,6 +98,12 @@ function showOptions() {
 
 }
 
+
+let filterParam = document.getElementById("filter");
+    filterParam.addEventListener("keydown", function(){
+        filterUpdate(filterParam.value);
+    });
+
 function filterUpdate(param) {
 
     let filtered = this.mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.author.indexOf(param) != -1 || e.frontend.indexOf(param) != -1);
@@ -106,10 +113,7 @@ function filterUpdate(param) {
      
 }
 
-let filterParam = document.getElementById("filter");
-    filterParam.addEventListener("keydown", function(){
-        filterUpdate(filterParam.value);
-    });
+
 
 
 
