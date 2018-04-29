@@ -16,19 +16,23 @@ function update(msgList) {
                 <h5 class="card-title"><strong>${e.title}</strong></h5>
                 <p class="card-text">${e.msg}</p> 
                 <small>${e.author}</small><br>
-                <small>ID: ${e.frontend}</small>
+                <small>ID: ${e.frontend}</small><br><br>
+                <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMessage(${e.id})">Remover</button>
             </div>
         </div>
     </div>
+    
     </div>`).join("\n");
     this.wall.innerHTML = items;
 }
 
 
 function onSubmit() {
-    var titulo = document.getElementById("title");
-    var mensagem = document.getElementById("mensagem");
-    var autor = document.getElementById("author");
+    let titulo = document.getElementById("title");
+    let mensagem = document.getElementById("mensagem");
+    let autor = document.getElementById("author");
+    let senha = document.getElementById("password");
+    
     
 fetch('http://150.165.85.16:9900/api/msgs', {
     method: 'POST',
@@ -36,7 +40,7 @@ fetch('http://150.165.85.16:9900/api/msgs', {
         title: titulo.value,
         msg: mensagem.value,
         author: autor.value,
-        credentials: "ifarias:btree"
+        credentials: `ifarias:${senha.value}`
     })
 });
 mensagens.push({
@@ -44,14 +48,46 @@ mensagens.push({
     msg: mensagem.value,
     author: autor.value
 })
-update(mensagens);   
-resetForm(titulo, mensagem, autor);
+update(mensagens);
+getMessages();
+resetForm();
 }
 
-function resetForm(titulo, mensagem, autor) {
-    titulo.value = '';
-    mensagem.value = '';
-    autor.value = '';
+function deleteMessage(index) {
+    let senha = document.getElementById("password").value;
+    let filtro = document.getElementById("filter");
+    fetch('http://150.165.85.16:9900/api/msgs/' + index, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            credentials: `ifarias:${senha}`
+        })
+    }).then( res=>  {
+        getMessages();
+        console.log("oi");
+    })
+   
+}
+
+
+
+function getMessages() {
+    fetch('http://150.165.85.16:9900/api/msgs')
+    .then(res => res.json())
+    .then(res => {
+        this.mensagens = res;
+        update(this.mensagens);
+        if (filterParam.value.length > 0) {
+            filterUpdate(filterParam.value);
+        }
+    });
+}
+
+function resetForm() {
+    let titulo = document.getElementById("title").value = "";
+    let mensagem = document.getElementById("mensagem").value = "";
+    let autor = document.getElementById("author").value = "";
+    let senha = document.getElementById("password").value = "";
+    let filtro = document.getElementById("filter").value = "";
 }
 
 function showForm() {
@@ -97,31 +133,18 @@ function showOptions() {
 }
 
 
-let filterParam = document.getElementById("filter");
+var filterParam = document.getElementById("filter");
     filterParam.addEventListener("keydown", function(){
         filterUpdate(filterParam.value);
     });
 
 function filterUpdate(param) {
-
-    let filtered = this.mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.author.indexOf(param) != -1 || e.frontend.indexOf(param) != -1);
+    let filtered = this.mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.frontend.indexOf(param) != -1 || e.author.indexOf(param) != -1);
     if (filtered.length != 0) {
         update(filtered);
     }
+    console.log(filtered);
      
-}
-
-
-
-
-
-function getMessages() {
-    fetch('http://150.165.85.16:9900/api/msgs')
-    .then(res => res.json())
-    .then(res => {
-        this.mensagens = res;
-        update(this.mensagens);
-    });
 }
 
 
