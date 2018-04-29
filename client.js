@@ -9,6 +9,7 @@ var mensagens = [];
 getMessages();
 
 function update(msgList) {
+    msgList.sort((a,b) => a.created_at > b.created_at ? -1 : 1);
     let items = msgList.map(e => `<div class="col">
     <div class="msg-card">
         <div class="card">
