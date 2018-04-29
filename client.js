@@ -9,9 +9,8 @@ var mensagens = [];
 getMessages();
 
 function update(msgList) {
-    let items = msgList.map(e => `<div class="row align-items-center">
-    <div class="col"></div>
-    <div class="col-6 msg-card">
+    let items = msgList.map(e => `<div class="col">
+    <div class="msg-card">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title"><strong>${e.title}</strong></h5>
@@ -21,7 +20,6 @@ function update(msgList) {
             </div>
         </div>
     </div>
-    <div class="col"></div>
     </div>`).join("\n");
     this.wall.innerHTML = items;
 }
@@ -74,7 +72,7 @@ function showMessages() {
     wallVisibility = !wallVisibility;
 
     if (wallVisibility === true) {
-        wall.style.display = 'block';
+        wall.style.display = 'flex';
         btnShow.textContent = 'Esconder mensagens';
     } else {
         wall.style.display = 'none';
