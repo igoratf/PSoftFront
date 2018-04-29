@@ -1,3 +1,6 @@
+if (typeof moment !== undefined) {
+    moment.locale("pt-BR");
+}
 
 var wall = document.getElementById("wall");
 var formVisibility = true;
@@ -16,15 +19,15 @@ function update(msgList) {
             <div class="card-body">
                 <h5 class="card-title"><strong>${e.title}</strong></h5>
                 <p class="card-text">${e.msg}</p> 
-                <small>${e.author}</small><br>
-                <small>ID: ${e.frontend}</small><br><br>
+                <p>${e.author}, ${moment(e.created_at).fromNow()}</p>
+                <small>ID: ${e.frontend}</small><br>
                 <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMessage(${e.id})">Remover</button>
             </div>
         </div>
     </div>
     
     </div>`).join("\n");
-    this.wall.innerHTML = items;
+    wall.innerHTML = items;
 }
 
 
@@ -74,8 +77,8 @@ function getMessages() {
     fetch('http://150.165.85.16:9900/api/msgs')
     .then(res => res.json())
     .then(res => {
-        this.mensagens = res;
-        update(this.mensagens);
+        mensagens = res;
+        update(mensagens);
         if (filterParam.value.length > 0) {
             filterUpdate(filterParam.value);
         }
@@ -139,7 +142,7 @@ var filterParam = document.getElementById("filter");
     });
 
 function filterUpdate(param) {
-    let filtered = this.mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.frontend.indexOf(param) != -1 || e.author.indexOf(param) != -1);
+    let filtered = mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.frontend.indexOf(param) != -1 || e.author.indexOf(param) != -1);
     if (filtered.length != 0) {
         update(filtered);
     }     
