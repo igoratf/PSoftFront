@@ -8,7 +8,6 @@ var wallVisibility = false;
 var optsVisibility = false;
 var mensagens = [];
 
-
 getMessages();
 
 function update(msgList) {

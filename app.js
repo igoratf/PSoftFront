@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-exports["moment"] = factory();
 
 app.use('/', express.static(__dirname));
 
