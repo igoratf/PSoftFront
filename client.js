@@ -63,7 +63,6 @@ function deleteMessage(index) {
         })
     }).then( res=>  {
         getMessages();
-        console.log("oi");
     })
    
 }
@@ -142,9 +141,7 @@ function filterUpdate(param) {
     let filtered = this.mensagens.filter(e => e.msg.indexOf(param) != -1 || e.title.indexOf(param) != -1 || e.frontend.indexOf(param) != -1 || e.author.indexOf(param) != -1);
     if (filtered.length != 0) {
         update(filtered);
-    }
-    console.log(filtered);
-     
+    }     
 }
 
 
