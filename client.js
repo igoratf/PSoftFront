@@ -12,7 +12,15 @@ getMessages();
 
 function update(msgList) {
     msgList.sort((a,b) => a.created_at > b.created_at ? -1 : 1);
-    let items = msgList.map(e => `<div class="col">
+    let items = msgList.map(function(e) {
+        let removeButton = '';
+        if (e.frontend === 'ifarias') {
+            removeButton = `<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMessage(${e.id})">Remover</button>`;
+        } else {
+            removeButton = `<button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMessage(${e.id})" disabled>Remover</button>`;
+        }
+
+    return (`<div class="col">
     <div class="msg-card">
         <div class="card">
             <div class="card-body">
@@ -20,12 +28,13 @@ function update(msgList) {
                 <p class="card-text">${e.msg}</p> 
                 <p>${e.author}, ${moment(e.created_at).fromNow()}</p>
                 <small>ID: ${e.frontend}</small><br>
-                <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteMessage(${e.id})">Remover</button>
+                ${removeButton}
             </div>
         </div>
     </div>
     
-    </div>`).join("\n");
+    </div>`)
+    }).join("\n");
     wall.innerHTML = items;
 }
 
